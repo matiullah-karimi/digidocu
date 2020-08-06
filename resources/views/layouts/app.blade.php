@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title') | {{config('settings.system_title')}}</title>
+    <title>@yield('title') | Document Management System</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
@@ -26,8 +26,11 @@
 
             <!-- Logo -->
             <a href="{{route('admin.dashboard')}}" class="hidden-xs logo">
-                <span class="logo-mini"><b>{{config('settings.system_title')[0]}}</b></span>
-                <span class="logo-lg"><b>{{config('settings.system_title')}}</b></span>
+                <div class="flex">
+                    <img src="{{asset(config('settings.system_logo'))}}" style="width: 60px"
+                        alt="User Image"/>
+                    <span class="logo-sm"><b>DMS</b></span>
+                </div>
             </a>
 
             <!-- Header Navbar -->
@@ -38,7 +41,7 @@
                 </a>
 
                 <span style="display: inline-block;width: 71vw;text-align: center;font-size: 20px;line-height: 50px;color: white;" class="visible-xs-inline-block">
-                    <b>{{config('settings.system_title')}}</b>
+                    <b>Document Management System</b>
                 </span>
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
