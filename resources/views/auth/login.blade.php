@@ -27,6 +27,9 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style>
+        body {
+            background-image: url("{{asset('ahsp-building.png')}}");
+        }
         .login-box-body{
             border: 1px solid rgba(0, 40, 100, 0.12) !important;
             box-shadow: 0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05) !important;
@@ -35,10 +38,10 @@
     </style>
 
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ route('home') }}"><b>{{config('settings.system_title')}} </b></a>
+        <a href="{{ route('home') }}"><b>Document Management System </b></a>
     </div>
 
     <!-- /.login-logo -->
@@ -84,8 +87,8 @@
             </div>
         </form>
 
-        <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
-        {{--<a href="{{ url('/register') }}" class="text-center">Register a new membership</a>--}}
+        <!-- <a href="{{ url('/password/reset') }}">I forgot my password</a><br>
+        {{--<a href="{{ url('/register') }}" class="text-center">Register a new membership</a>--}} -->
 
     </div>
     <!-- /.login-box-body -->
