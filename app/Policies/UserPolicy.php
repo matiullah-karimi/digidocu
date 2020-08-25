@@ -17,11 +17,7 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        if ($user->can('read users')) {
-            return true;
-        } else {
-            return false;
-        }
+        return $user->can('read users');
     }
 
     /**
@@ -33,11 +29,7 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        if ($user->can('read users')) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($user->can('read users') && $model->created_by == $user->id);
     }
 
     /**
@@ -48,11 +40,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        if ($user->can('create users')) {
-            return true;
-        } else {
-            return false;
-        }
+        return $user->can('create users');
     }
 
     /**
@@ -64,11 +52,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        if ($user->can('update users')) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($user->can('update users') && $model->created_by == $user->id);
     }
 
     /**
@@ -80,10 +64,6 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        if ($user->can('delete users')) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($user->can('delete users') && $model->created_by == $user->id);
     }
 }

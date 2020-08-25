@@ -71,7 +71,8 @@ class User extends Authenticatable
         'address',
         'description',
         'password',
-        'status'
+        'status',
+        'created_by'
     ];
 
     /**

@@ -65,6 +65,7 @@ class UserController extends AppBaseController
         $this->authorize('create', User::class);
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
+        $input['created_by'] = auth()->id();
 
         /** @var User $user */
         $user = $this->userRepository->create($input);

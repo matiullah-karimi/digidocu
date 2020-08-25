@@ -34,7 +34,14 @@ class UserDataTable extends DataTable
      */
     public function query(User $model)
     {
-        return $model->newQuery()->where('id','!=',1);
+        $query = $model->newQuery()->where('id','!=', 1);
+
+        if (! auth()->user()->isSuperAdmin)
+        {
+            $query->where('created_by', auth()->id());
+        }
+
+        return $query;
     }
 
     /**
