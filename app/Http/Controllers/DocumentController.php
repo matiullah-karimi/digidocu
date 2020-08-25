@@ -129,18 +129,20 @@ class DocumentController extends Controller
         if (empty($document)) {
             abort(404);
         }
+
         $this->authorize('view', $document);
 
         $missigDocMsgs = $this->documentRepository->buildMissingDocErrors($document);
 
-        if (auth()->user()->can('user manage permission')) {
-            $users = User::where('id', '!=', 1)->get();
-            $thisDocPermissionUsers = $this->permissionRepository->getUsersWiseDocumentLevelPermissionsForDoc($document);
-            //Tag Level permission
-            $tagWisePermList = $this->permissionRepository->getTagWiseUsersPermissionsForDoc($document);
-            //Global Permission
-            $globalPermissionUsers = $this->permissionRepository->getGlobalPermissionsForDoc($document);
-        }
+        // if (auth()->user()->can('user manage permission')) {
+        $users = User::where('id', '!=', 1)->get();
+        $thisDocPermissionUsers = $this->permissionRepository->getUsersWiseDocumentLevelPermissionsForDoc($document);
+        //Tag Level permission
+        $tagWisePermList = $this->permissionRepository->getTagWiseUsersPermissionsForDoc($document);
+        //Global Permission
+        $globalPermissionUsers = $this->permissionRepository->getGlobalPermissionsForDoc($document);
+        // }
+
         return view('documents.show', compact('document', 'missigDocMsgs', 'users', 'thisDocPermissionUsers', 'tagWisePermList', 'globalPermissionUsers'));
     }
 
